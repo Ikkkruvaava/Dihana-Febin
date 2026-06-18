@@ -1,0 +1,30 @@
+---
+import Section from "./Section.astro";
+
+const skills = [
+  "Photoshop",
+  "Illustrator",
+  "SEO",
+  "Meta Ads",
+  "Social Media",
+  "Content Creation",
+  "Google Ads",
+  "Analytics",
+];
+---
+
+<Section id="sponsors">
+  <div class="flex-row items-center">
+    <div class="flex flex-wrap justify-center gap-3 md:gap-4">
+      {
+        skills.map((skill) => {
+          return (
+            <span class="px-5 py-2.5 rounded-full text-sm md:text-base font-medium bg-dark text-green border border-green/20 hover:bg-green hover:text-dark transition-all duration-300 cursor-default">
+              {skill}
+            </span>
+          );
+        })
+      }
+    </div>
+  </div>
+</Section>

@@ -1,0 +1,48 @@
+---
+import AccordionItem from "./AccordionItem.astro";
+
+const content = [
+{
+  index: 1,
+  title: "Discovery Call",
+  description: "We start with a conversation. I learn about your brand, your goals, your audience, and what you've tried before. This gives me the full picture before I touch anything."
+},
+{
+  index: 2,
+  title: "Research & Strategy",
+  description: "I dive deep into your industry, competitors, and audience. Then I build a clear marketing strategy — the roadmap for everything we'll do together."
+},
+{
+  index: 3,
+  title: "Content & Creative",
+  description: "I get to work — designing graphics, writing copy, creating reels, and building the creative assets your brand needs to stand out."
+},
+{
+  index: 4,
+  title: "Launch & Execute",
+  description: "Campaigns go live. Content gets published. Ads start running. I manage everything to make sure execution is smooth and on-brand."
+},
+{
+  index: 5,
+  title: "Track & Optimize",
+  description: "I monitor performance daily — tracking metrics, analyzing what's working, and making real-time adjustments to maximize results."
+},
+{
+  index: 6,
+  title: "Report & Refine",
+  description: "You get a clear, easy-to-understand report on what happened, what worked, and what we'll do even better next time."
+}
+];
+---
+
+{
+  content.map((item) => {
+    return (
+      <AccordionItem
+        index={item.index}
+        title={item.title}
+        description={item.description}
+      />
+    );
+  })
+}

@@ -1,0 +1,137 @@
+---
+import Section from "./Section.astro";
+import Testimonials from "../../data/clientData.json";
+---
+
+<Section id="testimonials">
+  <div class="testimonials-section mt-20 mb-[150px]">
+    <!-- Section Header — centered -->
+    <div class="flex flex-col items-center gap-4 mb-16 text-center">
+      <h2 class="greenhead text-3xl sm:text-4xl">Kind Words</h2>
+      <p class="text-dark/60 max-w-md text-lg">What people say about working with me.</p>
+    </div>
+
+    <!-- Testimonials Grid -->
+    <div class="relative">
+      <!-- Decorative glow blobs -->
+      <div class="absolute -top-16 -left-16 w-44 h-44 bg-green/8 rounded-full blur-[80px] pointer-events-none"></div>
+      <div class="absolute -bottom-16 -right-16 w-52 h-52 bg-green/8 rounded-full blur-[80px] pointer-events-none"></div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        {
+          Testimonials.map((item, index) => (
+            <div
+              class:list={[
+                "testimonial-card group relative",
+                index === 1 ? "md:mt-10" : ""
+              ]}
+            >
+              {/* Card outer — gradient border wrapper */}
+              <div class="relative h-full rounded-[32px] p-[1.5px] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_8px_50px_rgba(185,255,102,0.12)] bg-gradient-to-br from-green/30 via-white/5 to-green/15 hover:from-green/60 hover:via-white/10 hover:to-green/40">
+
+                {/* Card inner */}
+                <div class="relative h-full rounded-[31px] bg-dark p-8 sm:p-10 flex flex-col gap-7">
+
+                  {/* Top row: quote icon + ghost number */}
+                  <div class="flex items-start justify-between">
+                    <svg class="w-9 h-9 text-green transition-colors duration-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11H10v10H0z"/>
+                    </svg>
+                    <span class="text-[72px] font-medium leading-none text-green/40 group-hover:text-green/70 transition-colors duration-500 select-none -mt-2">
+                      0{item.index}
+                    </span>
+                  </div>
+
+                  {/* Testimonial text */}
+                  <p class="text-white text-base sm:text-[17px] leading-[1.7] transition-colors duration-500 flex-grow">
+                    "{item.comment}"
+                  </p>
+
+                  {/* Gradient divider */}
+                  <div class="w-full h-px bg-gradient-to-r from-green/40 via-green/15 to-transparent"></div>
+
+                  {/* Author row */}
+                  <div class="flex items-center gap-4">
+                    {/* Initials avatar */}
+                    <div class="w-11 h-11 rounded-full bg-gradient-to-br from-green via-green/80 to-green/50 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(185,255,102,0.3)] transition-all duration-500">
+                      <span class="text-dark font-medium text-xs tracking-wide">
+                        {item.name.split(' ').map((w: string) => w[0]).join('')}
+                      </span>
+                    </div>
+                    <div class="min-w-0">
+                      <p class="text-green font-medium text-sm truncate">{item.name}</p>
+                      <p class="text-white/40 text-xs mt-0.5 truncate">{item.role}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Bottom decorative dots -->
+    <div class="flex justify-center mt-14 gap-2">
+      {[0, 1, 2].map((i) => (
+        <div
+          class:list={[
+            "h-1.5 rounded-full bg-green transition-all duration-500",
+            i === 1 ? "w-12 opacity-100" : "w-3 opacity-30"
+          ]}
+        ></div>
+      ))}
+    </div>
+  </div>
+</Section>
+
+<style>
+  /* Scroll-triggered entrance */
+  .testimonial-card {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  .testimonial-card.revealed {
+    animation: card-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .testimonial-card:nth-child(1).revealed { animation-delay: 0ms; }
+  .testimonial-card:nth-child(2).revealed { animation-delay: 120ms; }
+  .testimonial-card:nth-child(3).revealed { animation-delay: 240ms; }
+
+  @keyframes card-rise {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  function setupTestimonialObserver() {
+    const cards = document.querySelectorAll('.testimonial-card');
+
+    // Reset cards
+    cards.forEach(card => {
+      card.classList.remove('revealed');
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    cards.forEach(card => observer.observe(card));
+  }
+
+  setupTestimonialObserver();
+  document.addEventListener('astro:after-swap', setupTestimonialObserver);
+</script>
