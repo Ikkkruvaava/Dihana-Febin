@@ -9,6 +9,6 @@ import vercel from '@astrojs/vercel';
 export default defineConfig({
   site: "https://positivustheme.vercel.app",
   integrations: [tailwind()],
-  output: 'server',
+  output: 'static',
   adapter: vercel(),
 });

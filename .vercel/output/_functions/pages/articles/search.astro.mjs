@@ -4,10 +4,11 @@ import 'kleur/colors';
 import { $ as $$MainLayout } from '../../chunks/MainLayout_CEmZLZgm.mjs';
 import { $ as $$ArticleCard } from '../../chunks/ArticleCard_CUIK0gSK.mjs';
 import { $ as $$SearchForm } from '../../chunks/SearchForm_enHMlZxi.mjs';
-import { g as getCollection } from '../../chunks/_astro_content_DiC58jJ8.mjs';
+import { g as getCollection } from '../../chunks/_astro_content_4HiP69ST.mjs';
 export { renderers } from '../../renderers.mjs';
 
 const $$Astro = createAstro("https://positivustheme.vercel.app");
+const prerender = false;
 const $$Search = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Search;
@@ -29,6 +30,7 @@ const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
   default: $$Search,
   file: $$file,
+  prerender,
   url: $$url
 }, Symbol.toStringTag, { value: 'Module' }));
 
