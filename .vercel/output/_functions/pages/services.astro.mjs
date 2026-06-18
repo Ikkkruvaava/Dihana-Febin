@@ -1,9 +1,9 @@
 /* empty css                                 */
 import { c as createComponent, r as renderComponent, a as renderTemplate, m as maybeRenderHead, d as addAttribute } from '../chunks/astro/server_5S5MEE25.mjs';
 import 'kleur/colors';
-import { $ as $$MainLayout } from '../chunks/MainLayout_HoaepB6U.mjs';
+import { $ as $$MainLayout } from '../chunks/MainLayout_CEmZLZgm.mjs';
 import { $ as $$Card } from '../chunks/Card_prvYPjm4.mjs';
-import { c as c2, a as c3, b as c4, d as c5, e as c6, $ as $$ServiceCard } from '../chunks/card-pic6_9obraezi.mjs';
+import { c as c2, a as c3, b as c4, d as c5, e as c6, $ as $$ServiceCard } from '../chunks/card-pic6_CE1LzY-U.mjs';
 import { c as c1 } from '../chunks/card-pic1_CFcHYfs3.mjs';
 /* empty css                                    */
 export { renderers } from '../renderers.mjs';

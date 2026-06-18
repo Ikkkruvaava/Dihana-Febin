@@ -1,6 +1,6 @@
 ---
 import Section from "./Section.astro";
-import Testimonials from "../../data/clientData.json";
+import testimonialsData from "../../data/clientData.json";
 ---
 
 <Section id="testimonials">
@@ -19,7 +19,7 @@ import Testimonials from "../../data/clientData.json";
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
         {
-          Testimonials.map((item, index) => (
+          testimonialsData.map((item, index) => (
             <div
               class:list={[
                 "testimonial-card group relative",
